@@ -1,0 +1,15 @@
+div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    padding-top: 5%
+}
+
+.bg-padrao{
+    background: rgb(248, 204, 107)
+}
+
+/* paleta de cores:
+amarelo: #F8CC6B 
+vermelho:*/
