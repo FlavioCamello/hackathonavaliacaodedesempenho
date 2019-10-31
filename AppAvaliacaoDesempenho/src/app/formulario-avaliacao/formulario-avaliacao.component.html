@@ -1,193 +1,125 @@
 <div class="container">
-    <div class="ordem-compra">
+    <div class="form-avaliacao">
         <form
             novalidate
+            [formGroup]="form"
+            (ngSubmit)="salvarFormulario()"
         >
-            <div class="form-row">
-                <div class="col-sm-5">
-                    Departamento
-                    <input
-                        type="text"
-                        class="form-control"
-                    >
+
+        <div class="grid">
+            <div class="row">
+                <div class="col-md-2">
+                    Data de Início
+                    <label class="form-control">{{avaliacao.DataInicio | date:"dd/MM/yyyy"}}</label>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-md-2">
+                    Data de Término
+                    <label class="form-control">{{avaliacao.DataTermino | date:"dd/MM/yyyy"}}</label>
+                </div>
+                <div class="col-md-8">
                     Vendedor
-                    <input
-                        type="text"
-                        class="form-control"
-                    >
-                </div>
-                <div class="col-sm-2">
-                    Data
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="dd/MM/yyyy"
-                    >
+                    <label class="form-control">{{avaliacao.Vendedor.Nome}}</label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">Meta</div>
+                <div class="col-md-3">Realizado</div>
+                <div class="col-md-3">Moedas</div>
+            </div>
 
-            <div class="grid">
+            <div class="row">
+                <div class="col-md-3">Vendas de calças</div>
+
+                <div class="col-md-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="metaCalca"
+                        (input)="atualizarMoedas('calca')"
+                    >
+                </div>
                 
-                <div class="row">
-                    <div class="col-sm-4">
-                        Itens de avaliação
-                    </div>
-                    
-                    <div class="col-sm-2">
-                        Meta
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        Realizado
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        Variação (%)
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        Pontuação
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        Volume de vendas
-                    </div>
-                    
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        Quantidade de Clientes Positivados
-                    </div>
-                    
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        Quantidade de Clientes Novos
-                    </div>
-                    
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <!-- % dos clientes -->
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                        
-                    <div class="col-sm-2">
-                        <!-- Pontuacao dos clientes = % clientes -->
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2 float-right">
-                        Total:
-                    </div>
-                    <div class="col-sm-2 float-right">                        
-                        <input
-                            type="text"
-                            class="form-control"
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="col-sm-12">
-                    Observações
+                <div class="col-md-3">
                     <input
-                        type="textarea"
+                        type="number"
                         class="form-control"
+                        formControlName="realCalca"
+                        (input)="atualizarMoedas('calca')"
                     >
                 </div>
+                
+                <div class="col-md-3">
+                    <label
+                        type="text"
+                        class="form-control"
+                    >{{avaliacao.MetaVenda.MoedasVendaCalca | number : '1.2-2'}}</label>
+                </div>
+                
             </div>
 
-            <div class="form-row">
-                <div class="col-sm-12">
-                    Avaliador
+            <div class="row">
+                <div class="col-md-3">
+                    Vendas de camisas
+                </div>            
+
+                <div class="col-md-3">
                     <input
-                        type="textarea"
+                        type="nubmer"
                         class="form-control"
+                        formControlName="metaCamisa"
+                        (input)="atualizarMoedas('camisa')"
                     >
                 </div>
+                
+                <div class="col-md-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="realCamisa"
+                        (input)="atualizarMoedas('camisa')"
+                    >
+                </div>
+                
+                <div class="col-md-3">
+                    <label
+                        type="text"
+                        class="form-control"
+                    >{{avaliacao.MetaVenda.MoedasVendaCamisa | number : '1.2-2'}}</label>
+                </div>
             </div>
-        <hr />
+
+            <div class="row">
+                <div class="col-md-3">
+                    Vendas de bermuda
+                </div>
+                
+                <div class="col-md-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="metaBermuda"
+                        (input)="atualizarMoedas('bermuda')"
+                    >
+                </div>
+                
+                <div class="col-md-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="realBermuda"
+                        (input)="atualizarMoedas('bermuda')"
+                    >
+                </div>
+                
+                <div class="col-md-3">
+                    <label
+                        type="text"
+                        class="form-control"
+                    >{{avaliacao.MetaVenda.MoedasVendaBermuda | number : '1.2-2'}}</label>
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary btn-lg">Cofirmar</button>
         </form>
     </div>

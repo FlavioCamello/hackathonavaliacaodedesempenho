@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 
 import { Autenticacao } from './autenticacao.service'
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,8 @@ import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ Autenticacao ],
   bootstrap: [AppComponent]
