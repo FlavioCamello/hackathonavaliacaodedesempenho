@@ -1,6 +1,14 @@
 export class Usuario {
-    public email: string
-    public nome: string
-    public id: string
-    public perfil: string
+    public ID: string
+    public Nome: string
+    public Email: String
+    public Login: string
+    public Senha: string
+    public Perfil: string
+
+    public Avaliador: boolean
+
+    constructor(avaliador: boolean) {
+        this.Avaliador = avaliador
+    }
 }

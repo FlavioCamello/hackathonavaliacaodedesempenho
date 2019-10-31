@@ -1,20 +1,18 @@
 import { Usuario } from './usuario.model'
+import { HistoricoAvaliacao } from './historicoAvaliacao.model'
 
 export class Avaliacao {
-    public vendedor: Usuario
-    public avaliador: Usuario
+    ID: number
+    DataInicio: Date
+    DataTermino: Date
+    Vendedor: Usuario
+    Avaliador: Usuario
 
-    public metaVendas: number
-    public realizadoVendas: number
-    public pontuacaoVendas: number
-    
-    public metaClientesPositivados: number
-    public realizadoClientesPositivados: number
-    public pontuacaoClientesPositivados: number
-    
-    public metaClientesNovos: number
-    public realizadoClientesNovos: number
-    public pontuacaoClientesNovos: number
+    MetaVenda: HistoricoAvaliacao
 
-    public pontuacaoTotal: number = this.pontuacaoVendas + this.pontuacaoClientesPositivados + this.pontuacaoClientesNovos
+    constructor() {
+        this.MetaVenda = new HistoricoAvaliacao()
+        this.Vendedor = new Usuario(false)
+        this.Avaliador = new Usuario(true)
+    }
 }
