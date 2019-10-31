@@ -11,6 +11,7 @@ import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-avaliacao.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-
     BannerComponent,
     LoginComponent,
     CadastroComponent,
-    FormularioAvaliacaoComponent
+    FormularioAvaliacaoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
