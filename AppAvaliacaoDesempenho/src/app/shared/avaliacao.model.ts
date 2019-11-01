@@ -12,7 +12,9 @@ export class Avaliacao {
 
     constructor() {
         this.MetaVenda = new HistoricoAvaliacao()
-        this.Vendedor = new Usuario(false)
-        this.Avaliador = new Usuario(true)
+        this.MetaVenda.DataHistorico = new Date()
+        this.DataInicio = new Date()
+        this.DataTermino = new Date()
+        this.DataTermino.setDate(this.DataInicio.getDate() + 20)
     }
 }

@@ -1,0 +1,27 @@
+{
+  "avaliacoes": [
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 500,
+        "MetaVendaCamisa": 600,
+        "MetaVendaBermuda": 600,
+        "RealVendaCalca": 500,
+        "RealVendaCamisa": 500,
+        "RealVendaBermuda": 500,
+        "MoedasVendaCalca": 100,
+        "MoedasVendaCamisa": 83.33333333333334,
+        "MoedasVendaBermuda": 83.33333333333334,
+        "TotalMoedas": null,
+        "DataHistorico": "2019-11-01T13:06:48.833Z"
+      },
+      "DataInicio": "2019-11-01T13:06:48.833Z",
+      "DataTermino": "2019-11-21T13:06:48.833Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "João José Rezende e Costa"
+      },
+      "id": 1
+    }
+  ],
+  "historicoAvaliacoes": []
+}

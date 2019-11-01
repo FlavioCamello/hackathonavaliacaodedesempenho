@@ -12,7 +12,6 @@ export class BDService {
     constructor(private http: HttpClient){}
 
     public salvarAvaliacao(formulario: Avaliacao): Observable<number> {
-        console.log("entrou em salvarAvaliacao")
         let headers = new HttpHeaders({
             'Content-Type':'application/json',
           })
@@ -30,7 +29,6 @@ export class BDService {
     }
 
     public salvarHistorico(historico: HistoricoAvaliacao): Observable<number> {
-        console.log("entrou em salvarHistorico")
         let headers = new HttpHeaders({
             'Content-Type':'application/json',
           })
@@ -45,6 +43,25 @@ export class BDService {
             .pipe(
                 map((resposta: any) => resposta.id)
         )
+    }
+
+    public recuperarAvaliacao(id: Number): Observable<Avaliacao> {
+        return this.http.get<Avaliacao[]>(`${URL_API}/avaliacoes?id=${id}`)
+            .pipe(
+                map(
+                    (resposta: Avaliacao[]) => resposta[0]
+                )
+            )
+    }
+
+    
+    public recuperarArrayAvaliacao(id: Number): Observable<Avaliacao[]> {
+        return this.http.get<Avaliacao[]>(`${URL_API}/avaliacoes`)
+            .pipe(
+                map(
+                    (resposta: Avaliacao[]) => resposta
+                )
+            )
     }
 
 }
