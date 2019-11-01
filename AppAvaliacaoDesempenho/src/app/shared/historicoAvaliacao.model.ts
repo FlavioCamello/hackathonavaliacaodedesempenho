@@ -1,7 +1,4 @@
-export class HistoricoAvaliacao {
-    IDAvaliacao: number
-    DataHistorico: Date
-
+export class MetaAvaliacao {
     MetaVendaCalca: number = 0
     MetaVendaCamisa: number = 0
     MetaVendaBermuda: number = 0

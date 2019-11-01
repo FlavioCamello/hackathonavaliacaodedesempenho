@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Usuario } from '../shared/usuario.model';
 import { Avaliacao } from '../shared/avaliacao.model';
@@ -25,12 +25,12 @@ export class FormularioAvaliacaoComponent implements OnInit {
   public totalMoedas: number
   
   public form: FormGroup = new FormGroup({
-    'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca),
+    'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca, [Validators.min(100)]),
+    'metaCamisa': new FormControl(this.avaliacao.MetaVenda.MetaVendaCamisa, [Validators.min(100)]),
+    'metaBermuda': new FormControl(this.avaliacao.MetaVenda.MetaVendaBermuda, [Validators.min(100)]),
     'realCalca': new FormControl(this.avaliacao.MetaVenda.RealVendaCalca),
-    'metaCamisa': new FormControl(this.avaliacao.MetaVenda.MetaVendaCamisa),
     'realCamisa': new FormControl(this.avaliacao.MetaVenda.RealVendaCamisa),
-    'metaBermuda': new FormControl(this.avaliacao.MetaVenda.MetaVendaBermuda),
-    'realBermuda': new FormControl(this.avaliacao.MetaVenda.RealVendaBermuda),
+    'realBermuda': new FormControl(this.avaliacao.MetaVenda.RealVendaBermuda)
   })
 
   constructor(
@@ -41,7 +41,7 @@ export class FormularioAvaliacaoComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.avaliacao.ID = this.route.snapshot.params["id"]
     this.usuarioLogado.Nome = "João José Rezende e Costa" 
 
@@ -54,14 +54,12 @@ export class FormularioAvaliacaoComponent implements OnInit {
           this.avaliacao = resposta
           this.avaliacao.ID = this.route.snapshot.params["id"]
           this.formReady = true
-          this.form = new FormGroup({
-            'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca),
-            'realCalca': new FormControl(this.avaliacao.MetaVenda.RealVendaCalca),
-            'metaCamisa': new FormControl(this.avaliacao.MetaVenda.MetaVendaCamisa),
-            'realCamisa': new FormControl(this.avaliacao.MetaVenda.RealVendaCamisa),
-            'metaBermuda': new FormControl(this.avaliacao.MetaVenda.MetaVendaBermuda),
-            'realBermuda': new FormControl(this.avaliacao.MetaVenda.RealVendaBermuda),
-          })
+          this.form.controls.metaCalca.setValue(this.avaliacao.MetaVenda.MetaVendaCalca)
+          this.form.controls.metaCamisa.setValue(this.avaliacao.MetaVenda.MetaVendaCamisa)
+          this.form.controls.metaBermuda.setValue(this.avaliacao.MetaVenda.MetaVendaBermuda)
+          this.form.controls.realCalca.setValue(this.avaliacao.MetaVenda.RealVendaCalca)
+          this.form.controls.realCamisa.setValue(this.avaliacao.MetaVenda.RealVendaCamisa)
+          this.form.controls.realBermuda.setValue(this.avaliacao.MetaVenda.RealVendaBermuda)
         },
         (error: any) => console.log(error))
         
@@ -70,19 +68,17 @@ export class FormularioAvaliacaoComponent implements OnInit {
 
   public salvarFormulario(): void {
 
-    // if(this.avaliacao.ID == undefined || this.avaliacao.ID == 0){
-    //   this.BD.criarAvaliacao(this.avaliacao)
-    //     .subscribe(
-    //       (idAvaliacao: number) => {
-    //         this.avaliacao.MetaVenda.IDAvaliacao = idAvaliacao
-    //         this.BD.salvarHistorico(this.avaliacao.MetaVenda)
-    //           .subscribe()
-    //       }
-    //     )
-    // } else {
+    if(this.avaliacao.ID == undefined || this.avaliacao.ID == 0){
+      this.BD.criarAvaliacao(this.avaliacao)
+        .subscribe(
+          (idAvaliacao: number) => {
+            this.avaliacao.ID = idAvaliacao
+          }
+        )
+    } else {
       this.BD.editarAvaliacao(this.avaliacao)
         .subscribe()
-    // }
+    }
   }
 
   public atualizarMoedas(tipo: string): void{

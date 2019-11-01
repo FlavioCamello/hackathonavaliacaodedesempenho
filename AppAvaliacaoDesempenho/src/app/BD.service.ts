@@ -57,7 +57,7 @@ export class BDService {
             )
     }
     
-    public recuperarArrayAvaliacao(id: Number): Observable<Avaliacao[]> {
+    public recuperarArrayAvaliacao(): Observable<Avaliacao[]> {
         return this.http.get<Avaliacao[]>(`${URL_API}/avaliacoes`)
             .pipe(
                 map((resposta: Avaliacao[]) => resposta)

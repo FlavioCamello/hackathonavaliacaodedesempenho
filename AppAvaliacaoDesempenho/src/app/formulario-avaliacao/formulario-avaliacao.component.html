@@ -5,20 +5,24 @@
             [formGroup]="form"
             (ngSubmit)="salvarFormulario()"
         >
-        <div>sadda
-                {{avaliacao.ID}}
+        <div>
             <div class="row">
                 <div class="col-md-2">
-                    Data de Início
-                    <label class="form-control">{{avaliacao.DataInicio | date:"dd/MM/yyyy"}}</label>
-                </div>
-                <div class="col-md-2">
-                    Data de Término
-                    <label class="form-control">{{avaliacao.DataTermino | date:"dd/MM/yyyy"}}</label>
+                    Data da avaliacao
+                    <label class="form-control">{{avaliacao.Data | date:"dd/MM/yyyy"}}</label>
                 </div>
                 <div class="col-md-8">
                     Vendedor
                     <label class="form-control">{{avaliacao.Vendedor.Nome}}</label>
+                </div>
+                <div clas="col-md-2 text-right">
+                    <br/>
+                    <button type="submit" 
+                        class="form-control btn btn-primary"
+                        [disabled]="!form.valid"
+                    >
+                        SALVAR
+                    </button>
                 </div>
             </div>
             <div class="row">
@@ -38,6 +42,7 @@
                         formControlName="metaCalca"
                         (input)="atualizarMoedas('calca')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -48,6 +53,7 @@
                         formControlName="realCalca"
                         (input)="atualizarMoedas('calca')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -72,6 +78,7 @@
                         formControlName="metaCamisa"
                         (input)="atualizarMoedas('camisa')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -82,6 +89,7 @@
                         formControlName="realCamisa"
                         (input)="atualizarMoedas('camisa')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -105,6 +113,7 @@
                         formControlName="metaBermuda"
                         (input)="atualizarMoedas('bermuda')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -115,6 +124,7 @@
                         formControlName="realBermuda"
                         (input)="atualizarMoedas('bermuda')"
                         min="0"
+                        required
                     >
                 </div>
                 
@@ -142,14 +152,13 @@
                         >
                             {{
                                 (avaliacao.MetaVenda.MoedasVendaCalca +
-                                avaliacao.MetaVenda.MoedasVendaCamisa +
-                                avaliacao.MetaVenda.MoedasVendaBermuda) | number : '1.2-2'
+                                 avaliacao.MetaVenda.MoedasVendaCamisa +
+                                 avaliacao.MetaVenda.MoedasVendaBermuda) | number : '1.2-2'
                             }}
                         </label>
                     </div>
                 </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Cofirmar</button>
         </form>
     </div>
 </div>
