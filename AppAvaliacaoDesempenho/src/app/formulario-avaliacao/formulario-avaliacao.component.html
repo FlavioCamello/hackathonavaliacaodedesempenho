@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" *ngIf="formReady">
     <div class="form-avaliacao">
         <form
             novalidate
             [formGroup]="form"
             (ngSubmit)="salvarFormulario()"
         >
-
-        <div class="grid">
+        <div>sadda
+                {{avaliacao.ID}}
             <div class="row">
                 <div class="col-md-2">
                     Data de Início
@@ -37,6 +37,7 @@
                         class="form-control"
                         formControlName="metaCalca"
                         (input)="atualizarMoedas('calca')"
+                        min="0"
                     >
                 </div>
                 
@@ -46,6 +47,7 @@
                         class="form-control"
                         formControlName="realCalca"
                         (input)="atualizarMoedas('calca')"
+                        min="0"
                     >
                 </div>
                 
@@ -65,10 +67,11 @@
 
                 <div class="col-md-3">
                     <input
-                        type="nubmer"
+                        type="number"
                         class="form-control"
                         formControlName="metaCamisa"
                         (input)="atualizarMoedas('camisa')"
+                        min="0"
                     >
                 </div>
                 
@@ -78,6 +81,7 @@
                         class="form-control"
                         formControlName="realCamisa"
                         (input)="atualizarMoedas('camisa')"
+                        min="0"
                     >
                 </div>
                 
@@ -100,6 +104,7 @@
                         class="form-control"
                         formControlName="metaBermuda"
                         (input)="atualizarMoedas('bermuda')"
+                        min="0"
                     >
                 </div>
                 
@@ -109,6 +114,7 @@
                         class="form-control"
                         formControlName="realBermuda"
                         (input)="atualizarMoedas('bermuda')"
+                        min="0"
                     >
                 </div>
                 
@@ -119,6 +125,29 @@
                     >{{avaliacao.MetaVenda.MoedasVendaBermuda | number : '1.2-2'}}</label>
                 </div>
             </div>
+
+            <div class="row">
+                    <div class="col-md-3"></div>
+                    
+                    <div class="col-md-3"></div>
+                    
+                    <div class="col-md-3 text-right" >
+                        <label>Total:</label> 
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label
+                            type="text"
+                            class="form-control"
+                        >
+                            {{
+                                (avaliacao.MetaVenda.MoedasVendaCalca +
+                                avaliacao.MetaVenda.MoedasVendaCamisa +
+                                avaliacao.MetaVenda.MoedasVendaBermuda) | number : '1.2-2'
+                            }}
+                        </label>
+                    </div>
+                </div>
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Cofirmar</button>
         </form>

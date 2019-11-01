@@ -14,6 +14,8 @@ export class HistoricoAvaliacao {
     MoedasVendaCamisa: number = 0
     MoedasVendaBermuda: number = 0
 
+    TotalMoedas: number = 0
+
     constructor() {
         
     }
