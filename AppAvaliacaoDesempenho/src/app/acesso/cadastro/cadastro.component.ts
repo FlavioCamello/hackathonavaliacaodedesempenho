@@ -36,6 +36,7 @@ public formulario: FormGroup = new FormGroup({
     )
 
     this.autenticacao.cadastrarUsuario(usuario)
+    .then(()=> this.exibirPainelLogin())
   }
 
   public exibirPainelLogin(): void{
