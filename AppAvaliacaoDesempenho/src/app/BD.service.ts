@@ -4,7 +4,6 @@ import { Avaliacao } from './shared/avaliacao.model';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { URL_API } from './app.api';
-import { HistoricoAvaliacao } from './shared/historicoAvaliacao.model';
 
 @Injectable()
 export class BDService {
@@ -29,17 +28,6 @@ export class BDService {
     public editarAvaliacao(formulario: Avaliacao): Observable<number> {
         return this.http.put<number>(`${URL_API}/avaliacoes/${formulario.ID}`
             ,JSON.stringify(formulario),
-            this.httpOptions
-            )
-            .pipe(
-                map((resposta: any) => resposta.id),
-                catchError(this.handleError)
-        )
-    }
-
-    public salvarHistorico(historico: HistoricoAvaliacao): Observable<number> {
-        return this.http.post<number>(`${URL_API}/historicoAvaliacoes`
-            ,JSON.stringify(historico),
             this.httpOptions
             )
             .pipe(

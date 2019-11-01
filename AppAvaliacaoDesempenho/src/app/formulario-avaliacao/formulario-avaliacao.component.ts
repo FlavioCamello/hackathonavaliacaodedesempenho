@@ -5,6 +5,7 @@ import { Usuario } from '../shared/usuario.model';
 import { Avaliacao } from '../shared/avaliacao.model';
 import { BDService } from '../BD.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulario-avaliacao',
@@ -35,7 +36,8 @@ export class FormularioAvaliacaoComponent implements OnInit {
 
   constructor(
     private BD: BDService,
-    route: ActivatedRoute
+    route: ActivatedRoute,
+    private toast: ToastrService
   ) { 
     this.route = route 
   }
@@ -66,6 +68,10 @@ export class FormularioAvaliacaoComponent implements OnInit {
     }
   }
 
+  showSccess(){
+    this.toast.success('Hello world!', 'Toastr fun!');
+  }
+
   public salvarFormulario(): void {
 
     if(this.avaliacao.ID == undefined || this.avaliacao.ID == 0){
@@ -82,7 +88,6 @@ export class FormularioAvaliacaoComponent implements OnInit {
   }
 
   public atualizarMoedas(tipo: string): void{
-    console.log(tipo)
     let metacalca: number = this.form.controls.metaCalca.value
     let realCalca: number = this.form.controls.realCalca.value
 
