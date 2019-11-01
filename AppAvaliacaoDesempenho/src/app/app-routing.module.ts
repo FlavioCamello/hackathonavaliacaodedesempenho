@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', component: AcessoComponent },
   { path: 'home', component: HomeComponent, canActivate: [ AutenticacaoGuard ] },
   { path: 'avaliacao', component: FormularioAvaliacaoComponent, canActivate: [ AutenticacaoGuard ]},
+  { path: 'avaliacao/:id', component: FormularioAvaliacaoComponent, canActivate: [ AutenticacaoGuard ]},
 ];
 
 @NgModule({
