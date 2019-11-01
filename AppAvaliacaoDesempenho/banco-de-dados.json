@@ -2,26 +2,80 @@
   "avaliacoes": [
     {
       "MetaVenda": {
-        "MetaVendaCalca": 500,
-        "MetaVendaCamisa": 600,
-        "MetaVendaBermuda": 600,
-        "RealVendaCalca": 500,
-        "RealVendaCamisa": 500,
-        "RealVendaBermuda": 500,
-        "MoedasVendaCalca": 100,
-        "MoedasVendaCamisa": 83.33333333333334,
-        "MoedasVendaBermuda": 83.33333333333334,
+        "MetaVendaCalca": 111,
+        "MetaVendaCamisa": 0,
+        "MetaVendaBermuda": 0,
+        "RealVendaCalca": 0,
+        "RealVendaCamisa": 0,
+        "RealVendaBermuda": 0,
+        "MoedasVendaCalca": 0,
+        "MoedasVendaCamisa": 0,
+        "MoedasVendaBermuda": 0,
         "TotalMoedas": null,
-        "DataHistorico": "2019-11-01T13:06:48.833Z"
+        "DataHistorico": "2019-11-01T13:48:08.157Z"
       },
-      "DataInicio": "2019-11-01T13:06:48.833Z",
-      "DataTermino": "2019-11-21T13:06:48.833Z",
+      "DataInicio": "2019-11-01T13:48:08.157Z",
+      "DataTermino": "2019-11-21T13:48:08.157Z",
       "Vendedor": {
         "Avaliador": false,
         "Nome": "João José Rezende e Costa"
       },
       "id": 1
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 0,
+        "MetaVendaCamisa": 5555,
+        "MetaVendaBermuda": 0,
+        "RealVendaCalca": 1231,
+        "RealVendaCamisa": 555,
+        "RealVendaBermuda": 0,
+        "MoedasVendaCalca": 0,
+        "MoedasVendaCamisa": 9.99099909990999,
+        "MoedasVendaBermuda": 0,
+        "TotalMoedas": null,
+        "DataHistorico": "2019-11-01T13:56:41.851Z"
+      },
+      "DataInicio": "2019-11-01T13:56:41.851Z",
+      "DataTermino": "2019-11-21T13:56:41.851Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "João José Rezende e Costa"
+      },
+      "id": 2,
+      "ID": "2"
     }
   ],
-  "historicoAvaliacoes": []
+  "historicoAvaliacoes": [
+    {
+      "MetaVendaCalca": 111,
+      "MetaVendaCamisa": 0,
+      "MetaVendaBermuda": 0,
+      "RealVendaCalca": 0,
+      "RealVendaCamisa": 0,
+      "RealVendaBermuda": 0,
+      "MoedasVendaCalca": 0,
+      "MoedasVendaCamisa": 0,
+      "MoedasVendaBermuda": 0,
+      "TotalMoedas": null,
+      "DataHistorico": "2019-11-01T13:48:08.157Z",
+      "IDAvaliacao": 1,
+      "id": 1
+    },
+    {
+      "MetaVendaCalca": 0,
+      "MetaVendaCamisa": 5555,
+      "MetaVendaBermuda": 0,
+      "RealVendaCalca": 0,
+      "RealVendaCamisa": 555,
+      "RealVendaBermuda": 0,
+      "MoedasVendaCalca": 0,
+      "MoedasVendaCamisa": 9.99099909990999,
+      "MoedasVendaBermuda": 0,
+      "TotalMoedas": null,
+      "DataHistorico": "2019-11-01T13:56:41.851Z",
+      "IDAvaliacao": 2,
+      "id": 2
+    }
+  ]
 }

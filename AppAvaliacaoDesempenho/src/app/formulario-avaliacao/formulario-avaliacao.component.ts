@@ -52,6 +52,7 @@ export class FormularioAvaliacaoComponent implements OnInit {
         this.BD.recuperarAvaliacao(this.avaliacao.ID)
         .subscribe((resposta: Avaliacao) => {
           this.avaliacao = resposta
+          this.avaliacao.ID = this.route.snapshot.params["id"]
           this.formReady = true
           this.form = new FormGroup({
             'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca),
@@ -68,16 +69,20 @@ export class FormularioAvaliacaoComponent implements OnInit {
   }
 
   public salvarFormulario(): void {
-    console.log("entrou em salvarFormulario")
-    this.BD.salvarAvaliacao(this.avaliacao)
-        .subscribe(
-          (idAvaliacao: number) => { 
-            console.log(idAvaliacao)
-            this.avaliacao.MetaVenda.IDAvaliacao = idAvaliacao
-            this.BD.salvarHistorico(this.avaliacao.MetaVenda)
-              .subscribe((idHistorico: number) => console.log(idHistorico))
-          }
-        )
+
+    // if(this.avaliacao.ID == undefined || this.avaliacao.ID == 0){
+    //   this.BD.criarAvaliacao(this.avaliacao)
+    //     .subscribe(
+    //       (idAvaliacao: number) => {
+    //         this.avaliacao.MetaVenda.IDAvaliacao = idAvaliacao
+    //         this.BD.salvarHistorico(this.avaliacao.MetaVenda)
+    //           .subscribe()
+    //       }
+    //     )
+    // } else {
+      this.BD.editarAvaliacao(this.avaliacao)
+        .subscribe()
+    // }
   }
 
   public atualizarMoedas(tipo: string): void{
