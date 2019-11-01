@@ -1,4 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Autenticacao } from 'src/app/autenticacao.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,13 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   @Output() public exibirPainel: EventEmitter<string> = new EventEmitter<string>()
-  constructor() { }
+
+  public formulario: FormGroup = new FormGroup({
+    'email': new FormControl(),
+    'senha': new FormControl()
+  }) 
+  
+  constructor(private autenticacao: Autenticacao) { }
 
   ngOnInit() {
   }
@@ -16,4 +24,10 @@ export class LoginComponent implements OnInit {
   public exibirPainelCadastro(): void{
     this.exibirPainel.emit('cadastro')
   }
+
+  public autenticar(): void{
+    this.autenticacao.autenticar(
+      this.formulario.value.email,
+      this.formulario.value.senha)
+   }
 }

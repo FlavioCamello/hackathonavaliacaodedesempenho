@@ -12,6 +12,7 @@ import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-avaliacao.component';
 import { HomeComponent } from './home/home.component';
+import { AutenticacaoGuard } from './autenticacao-guard.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule
     
   ],
-  providers: [ Autenticacao ],
+  providers: [ Autenticacao, AutenticacaoGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
