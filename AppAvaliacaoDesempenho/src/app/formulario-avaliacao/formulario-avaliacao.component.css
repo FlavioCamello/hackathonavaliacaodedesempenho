@@ -4,6 +4,26 @@
 }
 
 .grid {
+    color: #555555;    
+}
+
+.grid-container{
     margin-top: 40px;
     margin-bottom: 40px;
+
+    border-top: 1px solid;
+    border-top-color: #DDDDDD;
+
+    border-bottom: 1px solid;
+    border-bottom-color: #DDDDDD;
+
+    padding: 10px;
+}
+
+.labelTitle {
+    font-size: x-small;
+}
+
+.label {
+    background: #AAAAAA !important;
 }

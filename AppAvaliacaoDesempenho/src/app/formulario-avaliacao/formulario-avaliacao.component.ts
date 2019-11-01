@@ -26,9 +26,9 @@ export class FormularioAvaliacaoComponent implements OnInit {
   public totalMoedas: number
   
   public form: FormGroup = new FormGroup({
-    'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca, [Validators.min(100)]),
-    'metaCamisa': new FormControl(this.avaliacao.MetaVenda.MetaVendaCamisa, [Validators.min(100)]),
-    'metaBermuda': new FormControl(this.avaliacao.MetaVenda.MetaVendaBermuda, [Validators.min(100)]),
+    'metaCalca': new FormControl(this.avaliacao.MetaVenda.MetaVendaCalca),
+    'metaCamisa': new FormControl(this.avaliacao.MetaVenda.MetaVendaCamisa),
+    'metaBermuda': new FormControl(this.avaliacao.MetaVenda.MetaVendaBermuda),
     'realCalca': new FormControl(this.avaliacao.MetaVenda.RealVendaCalca),
     'realCamisa': new FormControl(this.avaliacao.MetaVenda.RealVendaCamisa),
     'realBermuda': new FormControl(this.avaliacao.MetaVenda.RealVendaBermuda)
@@ -68,8 +68,11 @@ export class FormularioAvaliacaoComponent implements OnInit {
     }
   }
 
-  showSccess(){
-    this.toast.success('Hello world!', 'Toastr fun!');
+  public showSuccess(mensagem: string) {
+  }
+
+  public showError(mensagem: string){    
+    this.toast.error(mensagem)
   }
 
   public salvarFormulario(): void {
@@ -79,11 +82,20 @@ export class FormularioAvaliacaoComponent implements OnInit {
         .subscribe(
           (idAvaliacao: number) => {
             this.avaliacao.ID = idAvaliacao
+            this.toast.success("Avaliação salva com sucesso")
+          },
+          (err: any) => {
+            this.toast.error(err) 
           }
         )
+        
     } else {
       this.BD.editarAvaliacao(this.avaliacao)
-        .subscribe()
+        .subscribe(() => this.toast.success("Avaliação salva com sucesso"),
+          (err: any) => {
+            this.toast.error(err) 
+          }
+        )
     }
   }
 
