@@ -44,12 +44,14 @@ export class FormularioAvaliacaoComponent implements OnInit {
     this.route = route 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
 
-    this.autenticacao.retornaUsuarioLogado().then((usuario: any) => console.log(usuario))
+    await this.autenticacao.retornaUsuarioLogado()
+      .then((usuario: any) => {
+        this.usuarioLogado.Nome = usuario.nome_completo
+      })
 
-    this.avaliacao.ID = this.route.snapshot.params["id"]
-    this.usuarioLogado.Nome = "João José Rezende e Costa" 
+    this.avaliacao.ID = this.route.snapshot.params["id"] 
 
     if(this.avaliacao.ID == undefined || this.avaliacao.ID == 0) {
       this.formReady = true
