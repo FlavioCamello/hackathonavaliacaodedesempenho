@@ -49,6 +49,7 @@ export class FormularioAvaliacaoComponent implements OnInit {
     await this.autenticacao.retornaUsuarioLogado()
       .then((usuario: any) => {
         this.usuarioLogado.Nome = usuario.nome_completo
+        this.usuarioLogado.Email = usuario.email
       })
 
     this.avaliacao.ID = this.route.snapshot.params["id"] 
