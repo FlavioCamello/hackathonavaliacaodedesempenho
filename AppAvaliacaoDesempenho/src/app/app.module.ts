@@ -15,6 +15,8 @@ import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-avaliacao.component';
 import { HomeComponent } from './home/home.component';
 import { AutenticacaoGuard } from './autenticacao-guard.service';
+import { TopoComponent } from './topo/topo.component';
+import { ConteudoComponent } from './conteudo/conteudo.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { AutenticacaoGuard } from './autenticacao-guard.service';
     LoginComponent,
     CadastroComponent,
     FormularioAvaliacaoComponent,
-    HomeComponent
+    HomeComponent,
+    TopoComponent,
+    ConteudoComponent
   ],
   imports: [
     BrowserModule,

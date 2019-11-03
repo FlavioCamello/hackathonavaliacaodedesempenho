@@ -1,0 +1,20 @@
+
+ .fa-chart-bar, .fa-chart-pie, .fa-chart-line {
+    color: white;
+}
+.container i{
+    font-size: 20px;
+}
+
+.fa-chart-bar{
+    color: #de001a;
+}
+.fa-chart-pie{
+    color: #00c40d;
+}
+.fa-chart-line{
+    color: #6868fa;
+}
+.fas {
+    padding-right: 10px;
+}

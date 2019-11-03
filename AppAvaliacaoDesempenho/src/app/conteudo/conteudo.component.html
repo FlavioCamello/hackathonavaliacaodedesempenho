@@ -1,0 +1,82 @@
+<div class="container content" style="margin-top: 20px;">
+  <div class="row form-group">
+    <div class="col-lg-4 col-md-4 col-sm-12 ">
+      <div style="border: 1px solid #cecece; padding: 10px;">
+        <div class="row form-group">
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <label>Vendedor</label>
+            <select
+              id="cbo-pessoa"
+              class="form-control"
+              (change)="onChangePessoa($event.target.value)"
+            >
+              <option *ngFor="let ve of Vendedores" [value]="ve.Usuario.ID">{{
+                ve.Usuario.Nome
+              }}</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <label>Dia do mês</label>
+            <select id="cbo-dia" class="form-control" (change)="ChangeSelect()">
+              <option value="-1">Mensal</option>
+              <option *ngFor="let day of Days" [value]="day">{{ day }}</option>
+            </select>
+          </div>
+        </div>
+
+        <canvas id="chart-vendedor" width="400" height="230"></canvas>
+      </div>
+      <div style="border: 1px solid #cecece; padding: 10px; margin-top: 10px;">
+        <div>
+          <canvas id="line-chart" width="400" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12" style="max-height: 620px; overflow-y: scroll;">
+      <table
+        id="table-vendedores"
+        class="table table-hover table-responsive"
+        style="border: 1px solid #cecece;"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Vendedor</th>
+            <th scope="col" style="text-align: center;">Data Avaliação</th>
+            <th scope="col" style="text-align: center;">Total Meta</th>
+            <th scope="col" style="text-align: center;">Total Real</th>
+            <th scope="col" style="text-align: center;">Validado</th>
+            <th scope="col" style="text-align: right;">
+              Quantidade Avaliações
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let row of Vendedores"
+            [attr.id]="'user-' + row.Usuario.ID"
+            (click)="AppendRow(row.Usuario.ID)"
+          >
+            <th scope="row">
+              {{ row.Usuario.Nome }}
+            </th>
+
+            <td style="text-align: center;">
+              <button class="btn btn-primary" style="text-align: center;">
+                <i
+                  class="fas fa-plus"
+                  style="padding-left: 0px; font-size: 15px;"
+                ></i>
+                Criar Avaliação
+              </button>
+            </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;">{{ row.QuantAvaliacoes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
