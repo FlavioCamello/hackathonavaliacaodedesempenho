@@ -18,7 +18,7 @@ export class Autenticacao{
 
     public static emailUser: string
     public token_id: string
-    public objUsuario: Usuario = new Usuario("","","","");
+    public objUsuario: Usuario = new Usuario("","","","","");
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
         console.log("chegamos com o usuario: ",usuario)
 
@@ -35,7 +35,10 @@ export class Autenticacao{
         })
     }
 
-    public autenticar(email: string, senha: string): void{
+    public autenticar(email: string, senha: string): Promise<any>{
+        let valido: boolean = true
+        return new Promise((resolve, reject) => {
+
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then((resposta: any) => 
             
@@ -48,18 +51,23 @@ export class Autenticacao{
                 console.log(this.token_id)
 
                 this.router.navigate(['/home'])
+                resolve(valido)
             }))
-            .catch((error: Error) => console.log(error))
-    }
+            .catch((error: Error) => resolve(false))
+    })
+}
+
 
     public retornaUsuarioLogado(): Promise<any>{
         
         return new Promise((resolve, reject) => {
             firebase.auth().onAuthStateChanged((user) => { 
+                console.log("UID", user.uid)
                 let objUsuario = firebase.database().ref(`usuario_detalhe/${btoa(user.email)}`)
                 objUsuario.on('value', function(snapshot){
                   let usuarioSnapshot = snapshot.val()
-                  let usuario = new Usuario(usuarioSnapshot.email, usuarioSnapshot.nome_completo, usuarioSnapshot.nome_usuario, "")
+                  
+                  let usuario = new Usuario(usuarioSnapshot.email, usuarioSnapshot.nome_completo, usuarioSnapshot.nome_usuario, "", user.uid)
                   resolve(usuario)  
                 })
             })

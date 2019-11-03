@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 import { TopoComponent } from './topo/topo.component';
 import { ConteudoComponent } from './conteudo/conteudo.component';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { ConteudoComponent } from './conteudo/conteudo.component';
     FormularioAvaliacaoComponent,
     HomeComponent,
     TopoComponent,
-    ConteudoComponent
+    ConteudoComponent,
+    ProdutosComponent
+
   ],
   imports: [
     BrowserModule,

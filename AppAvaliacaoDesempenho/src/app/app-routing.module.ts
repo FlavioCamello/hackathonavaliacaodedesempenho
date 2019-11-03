@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AcessoComponent } from './acesso/acesso.component';
 import { FormularioAvaliacaoComponent } from './formulario-avaliacao/formulario-avaliacao.component';
 import { AutenticacaoGuard } from './autenticacao-guard.service';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [ AutenticacaoGuard ] },
   { path: 'avaliacao', component: FormularioAvaliacaoComponent, canActivate: [ AutenticacaoGuard ]},
   { path: 'avaliacao/:id', component: FormularioAvaliacaoComponent, canActivate: [ AutenticacaoGuard ]},
+  { path: 'produto', component: ProdutosComponent, canActivate: [ AutenticacaoGuard ]},
 ];
 
 @NgModule({

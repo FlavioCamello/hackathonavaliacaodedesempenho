@@ -10,7 +10,7 @@ import { Autenticacao } from 'src/app/autenticacao.service';
 export class LoginComponent implements OnInit {
 
   @Output() public exibirPainel: EventEmitter<string> = new EventEmitter<string>()
-
+  public mensagemErroLogin: string
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(),
     'senha': new FormControl()
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   public autenticar(): void{
     this.autenticacao.autenticar(
       this.formulario.value.email,
-      this.formulario.value.senha)
-   }
+      this.formulario.value.senha).then((valido: boolean) => 
+      this.mensagemErroLogin = valido ? "" : "O nome de usuário inserido não pertence a uma conta. Verifique seu nome de usuário e tente novamente." 
+      )}
 }
