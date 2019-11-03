@@ -24,6 +24,9 @@ export class ConteudoComponent implements OnChanges {
   private ch: Chart;
   private lineCh: Chart;
 
+  public day;
+  public idPessoa;
+
   constructor() {
     this.Vendedores = [];
     // Date.prototype.toISODate = function() {
@@ -60,24 +63,35 @@ export class ConteudoComponent implements OnChanges {
       }
     }
     if (this.Avaliacoes.length > 0) {
+      this.idPessoa = this.Vendedores[0].Usuario.ID;
+
       this.MontarGrafico(this.Vendedores[0].Usuario.ID);
       this.AppendRow(this.Vendedores[0].Usuario.ID);
     }
   }
 
   public onChangePessoa(id) {
+    this.idPessoa = id;
     this.MontarGrafico(id);
     this.AppendRow(id);
   }
 
-  public ChangeSelect() {
-    var cboVendedor = document.getElementById("cbo-pessoa");
-    var id = cboVendedor.options[cboVendedor.selectedIndex].value;
+  public ChangeSelect(day) {
+    this.day = day;
 
-    this.MontarGrafico(id);
+    // var cboVendedor = document.getElementById("cbo-pessoa");
+    // var id = cboVendedor.options[cboVendedor.selectedIndex].value;
+
+    this.MontarGrafico(this.idPessoa);
   }
   public GetDate(data){
-    data.toISODate()
+       return (
+          (data.getDate() < 9 ? "0"+data.getDate() : data.getDate()) +
+          "-" +
+          ("0" + (data.getMonth() + 1)).slice(-2) +
+          "-" +
+          ("0" + data.getFullYear()).slice(-2)
+        );
   }
   public GetHtmlRowVendas(vendas): string{
     return vendas
@@ -139,8 +153,8 @@ export class ConteudoComponent implements OnChanges {
 
   public MontarGrafico(id) {
     var d = new Date();
-    var elem = document.getElementById("cbo-dia");
-    var day = elem.options[elem.selectedIndex].value;
+    // var elem = document.getElementById("cbo-dia");
+    // var day = elem.options[elem.selectedIndex].value;
 
     let Mensal = this.Avaliacoes.filter(
       x =>
@@ -172,7 +186,7 @@ export class ConteudoComponent implements OnChanges {
       }
 
       let Aval = Mensal.filter(x =>
-        day == -1 ? true : x.Data.getDate() == day
+        this.day == -1 ? true : x.Data.getDate() == this.day
       );
 
       if (Aval != undefined) {

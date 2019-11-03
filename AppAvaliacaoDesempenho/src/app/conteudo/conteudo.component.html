@@ -17,7 +17,7 @@
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label>Dia do mês</label>
-            <select id="cbo-dia" class="form-control" (change)="ChangeSelect()">
+            <select id="cbo-dia" class="form-control" (change)="ChangeSelect($event.target.value)">
               <option value="-1">Mensal</option>
               <option *ngFor="let day of Days" [value]="day">{{ day }}</option>
             </select>
