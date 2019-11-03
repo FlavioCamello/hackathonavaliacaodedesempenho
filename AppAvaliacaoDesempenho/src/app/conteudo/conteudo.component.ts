@@ -26,15 +26,15 @@ export class ConteudoComponent implements OnChanges {
 
   constructor() {
     this.Vendedores = [];
-    Date.prototype.toISODate = function() {
-      return (
-        (this.getDate() < 9 ? "0"+this.getDate() : this.getDate()) +
-        "-" +
-        ("0" + (this.getMonth() + 1)).slice(-2) +
-        "-" +
-        ("0" + this.getFullYear()).slice(-2)
-      );
-    };
+    // Date.prototype.toISODate = function() {
+    //   return (
+    //     (this.getDate() < 9 ? "0"+this.getDate() : this.getDate()) +
+    //     "-" +
+    //     ("0" + (this.getMonth() + 1)).slice(-2) +
+    //     "-" +
+    //     ("0" + this.getFullYear()).slice(-2)
+    //   );
+    // };
 
     var d = new Date();
     this.Days = [];
@@ -76,14 +76,16 @@ export class ConteudoComponent implements OnChanges {
 
     this.MontarGrafico(id);
   }
-  
+  public GetDate(data){
+    data.toISODate()
+  }
   public GetHtmlRowVendas(vendas): string{
     return vendas
         .map(
           x => `
       <tr class="row-venda" >
         <td style="text-align: right;">${x.Vendedor.Nome}</td>
-        <td style="text-align: center;">${x.Data.toISODate()}</td>
+        <td style="text-align: center;">${this.GetDate(x.Data)}</td>
         <td style="text-align: center;">${x.MetaVenda.MetaVendaBermuda +
           x.MetaVenda.MetaVendaCalca +
           x.MetaVenda.MetaVendaCamisa}</td>
