@@ -6,6 +6,7 @@ import { Avaliacao } from '../shared/avaliacao.model';
 import { BDService } from '../BD.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Autenticacao } from '../autenticacao.service';
 
 @Component({
   selector: 'app-formulario-avaliacao',
@@ -37,12 +38,15 @@ export class FormularioAvaliacaoComponent implements OnInit {
   constructor(
     private BD: BDService,
     route: ActivatedRoute,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private autenticacao: Autenticacao
   ) { 
     this.route = route 
   }
 
   ngOnInit() {
+
+    this.autenticacao.retornaUsuarioLogado().then((usuario: any) => console.log(usuario))
 
     this.avaliacao.ID = this.route.snapshot.params["id"]
     this.usuarioLogado.Nome = "João José Rezende e Costa" 
