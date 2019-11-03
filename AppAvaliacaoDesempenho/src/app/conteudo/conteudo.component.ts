@@ -6,9 +6,8 @@ import {
 } from "@angular/core";
 import { Avaliacao } from "../shared/avaliacao.model";
 import Chart from "chart.js";
-import { Usuario } from "../shared/usuario.model";
 import { UsuarioTabela } from "../shared/UsuarioTabela.model";
-import { $ } from "protractor";
+
 
 @Component({
   selector: "app-conteudo",
@@ -29,13 +28,14 @@ export class ConteudoComponent implements OnChanges {
     this.Vendedores = [];
     Date.prototype.toISODate = function() {
       return (
-        this.getDate() +
+        (this.getDate() < 9 ? "0"+this.getDate() : this.getDate()) +
         "-" +
         ("0" + (this.getMonth() + 1)).slice(-2) +
         "-" +
         ("0" + this.getFullYear()).slice(-2)
       );
     };
+
     var d = new Date();
     this.Days = [];
     for (var i = 1; i <= d.getDate(); i++) {
@@ -45,8 +45,8 @@ export class ConteudoComponent implements OnChanges {
   ngOnChanges() {
     for (var i = 0; i < this.Avaliacoes.length; i++) {
       if (
-        this.Vendedores.some(
-          x => x.Usuario.ID == this.Avaliacoes[i].Vendedor.ID
+          this.Vendedores.some(
+            x => x.Usuario.ID == this.Avaliacoes[i].Vendedor.ID
         )
       ) {
         this.Vendedores.find(
@@ -76,15 +76,9 @@ export class ConteudoComponent implements OnChanges {
 
     this.MontarGrafico(id);
   }
-
-  public AppendRow(id) {
-    let vendas = this.Avaliacoes.filter(x => x.Vendedor.ID == id);
-    if (vendas != undefined && vendas.length > 0) {
-      vendas = vendas.sort(function(a, b) {
-        return b.Data.getTime() - a.Data.getTime();
-      });
-
-      let html = vendas
+  
+  public GetHtmlRowVendas(vendas): string{
+    return vendas
         .map(
           x => `
       <tr class="row-venda" >
@@ -103,15 +97,25 @@ export class ConteudoComponent implements OnChanges {
               </label>
 				</td>
           <td style="text-align: right;">
-            <button class="btn btn-secondary">
+            <a href="/avaliacao/${x.ID}" class="btn btn-secondary">
             <i class="fas fa-pen edit-aval"></i>
               Editar
-            </button>  
+            </a>  
           </td>
       </tr>
     `
         )
-        .join(" ");
+        .join(" ")
+  }
+
+  public AppendRow(id) {
+    let vendas = this.Avaliacoes.filter(x => x.Vendedor.ID == id);
+    if (vendas != undefined && vendas.length > 0) {
+      vendas = vendas.sort(function(a, b) {
+        return b.Data.getTime() - a.Data.getTime();
+      });
+
+      let html = this.GetHtmlRowVendas(vendas);
       var objs = document.getElementsByClassName("row-venda");
       if (objs != undefined && objs.length > 0) {
         while (objs.length > 0) {
@@ -164,11 +168,6 @@ export class ConteudoComponent implements OnChanges {
           dsTotalMensal.push(obj.MetaVenda.RealVendaBermuda+obj.MetaVenda.RealVendaCalca+obj.MetaVenda.RealVendaCamisa);
         }
       }
-
-
-
-
-
 
       let Aval = Mensal.filter(x =>
         day == -1 ? true : x.Data.getDate() == day
@@ -273,22 +272,8 @@ export class ConteudoComponent implements OnChanges {
           borderColor: "black",
           fill: false
         }
-        // ,
-        // {
-        //   data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
-        //   label: "Latin America",
-        //   borderColor: "#e8c3b9",
-        //   fill: false
-        // },
-        // {
-        //   data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
-        //   label: "North America",
-        //   borderColor: "#c45850",
-        //   fill: false
-        // }
       ]
     };
-
 
     if(this.lineCh == undefined || this.lineCh == null){
       this.lineCh = new Chart(document.getElementById("line-chart"), {
@@ -306,6 +291,5 @@ export class ConteudoComponent implements OnChanges {
       this.lineCh.data = dataLine;
       this.lineCh.update();
     }
-    
   }
 }

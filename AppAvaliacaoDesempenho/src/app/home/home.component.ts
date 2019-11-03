@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     let aux = [];
     let dataAtual = new Date();
     
-    var sla = this.BD.recuperarArrayAvaliacao().subscribe((resposta: Avaliacao[]) => {
+    this.BD.recuperarArrayAvaliacao().subscribe((resposta: Avaliacao[]) => {
       for(var i = 0; i < resposta.length; i++){
         let obj = resposta[i];
         obj.Data = new Date(obj.Data);
@@ -36,7 +36,9 @@ export class HomeComponent implements OnInit {
       
       aux = aux.filter(x => x.Data.getFullYear() == dataAtual.getFullYear() && x.Data.getMonth() == dataAtual.getMonth());
       aux = [...aux, ...this.RecuperarDados()];
+
       // aux = aux.filter(x => x.Vendedor.ID == 2);
+      
       aux = aux.sort(function(a, b){
         if(a.Vendedor.Nome < b.Vendedor.Nome) { return -1; }
         if(a.Vendedor.Nome > b.Vendedor.Nome) { return 1; }
