@@ -1,4 +1,15 @@
-<div class="container content" style="margin-top: 20px;">
+<div class="container" style="width: 95%; max-width: inherit;">
+  <button class="btn btn-primary" style="text-align: center; margin-top: 10px;" (click)="RedirectCriar();">
+    <i
+      class="fas fa-plus"
+      style="padding-left: 0px; font-size: 15px;"
+    ></i>
+    Criar Avaliação
+  </button>
+</div>
+
+
+<div class="container content" style="margin-top: 40px;">
   <div class="row form-group">
     <div class="col-lg-4 col-md-4 col-sm-12 ">
       <div style="border: 1px solid #cecece; padding: 10px;">
@@ -33,6 +44,7 @@
       </div>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12" style="max-height: 620px; overflow-y: scroll;">
+      
       <table
         id="table-vendedores"
         class="table table-hover table-responsive"
@@ -61,13 +73,7 @@
             </th>
 
             <td style="text-align: center;">
-              <button class="btn btn-primary" style="text-align: center;">
-                <i
-                  class="fas fa-plus"
-                  style="padding-left: 0px; font-size: 15px;"
-                ></i>
-                Criar Avaliação
-              </button>
+             
             </td>
 
             <td></td>

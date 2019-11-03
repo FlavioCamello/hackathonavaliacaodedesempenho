@@ -7,6 +7,8 @@ import {
 import { Avaliacao } from "../shared/avaliacao.model";
 import Chart from "chart.js";
 import { UsuarioTabela } from "../shared/UsuarioTabela.model";
+import { Autenticacao } from '../autenticacao.service';
+import { Usuario } from '../acesso/usuario.model';
 
 
 @Component({
@@ -20,32 +22,48 @@ export class ConteudoComponent implements OnChanges {
   @Input() public Avaliacoes: Avaliacao[];
   public Vendedores: UsuarioTabela[];
   public Days: number[];
+  public UsuarioLogado: Usuario;
 
   private ch: Chart;
   private lineCh: Chart;
-
-  public day;
+ 
+  public day = -1;
   public idPessoa;
+  
 
-  constructor() {
+  constructor(private autenticacao: Autenticacao) {
     this.Vendedores = [];
-    // Date.prototype.toISODate = function() {
-    //   return (
-    //     (this.getDate() < 9 ? "0"+this.getDate() : this.getDate()) +
-    //     "-" +
-    //     ("0" + (this.getMonth() + 1)).slice(-2) +
-    //     "-" +
-    //     ("0" + this.getFullYear()).slice(-2)
-    //   );
-    // };
-
+    this.autenticacao.retornaUsuarioLogado().then((usuario: any) => {
+      this.UsuarioLogado = usuario;
+    });
+   
     var d = new Date();
     this.Days = [];
     for (var i = 1; i <= d.getDate(); i++) {
       this.Days.push(i);
     }
   }
+
+  RedirectCriar(){
+    var id = '';
+    if(this.Avaliacoes != null){
+      var d = new Date();
+      var filtro = this.Avaliacoes.filter(x => (
+        x.Vendedor.ID == this.UsuarioLogado.email
+        && x.Data.getDate() == d.getDate()
+        && x.Data.getMonth() == d.getMonth()
+        && x.Data.getFullYear() == d.getFullYear()
+      ));
+      if(filtro != undefined && filtro.length > 0){
+        window.location.href = '/avaliacao/'+filtro[0].ID;
+      } else{
+        window.location.href = '/avaliacao';
+      }
+    }
+  }
+
   ngOnChanges() {
+    if (this.Avaliacoes != undefined && this.Avaliacoes.length > 0) {
     for (var i = 0; i < this.Avaliacoes.length; i++) {
       if (
           this.Vendedores.some(
@@ -62,7 +80,8 @@ export class ConteudoComponent implements OnChanges {
         this.Vendedores.push(obj);
       }
     }
-    if (this.Avaliacoes.length > 0) {
+   
+
       this.idPessoa = this.Vendedores[0].Usuario.ID;
 
       this.MontarGrafico(this.Vendedores[0].Usuario.ID);
@@ -78,10 +97,6 @@ export class ConteudoComponent implements OnChanges {
 
   public ChangeSelect(day) {
     this.day = day;
-
-    // var cboVendedor = document.getElementById("cbo-pessoa");
-    // var id = cboVendedor.options[cboVendedor.selectedIndex].value;
-
     this.MontarGrafico(this.idPessoa);
   }
   public GetDate(data){
@@ -113,7 +128,7 @@ export class ConteudoComponent implements OnChanges {
               </label>
 				</td>
           <td style="text-align: right;">
-            <a href="/avaliacao/${x.ID}" class="btn btn-secondary">
+            <a href="/avaliacao/${x.ID || x.id}" class="btn btn-secondary">
             <i class="fas fa-pen edit-aval"></i>
               Editar
             </a>  
@@ -237,6 +252,8 @@ export class ConteudoComponent implements OnChanges {
       ]
     };
 
+
+    
     var ctx = (<HTMLCanvasElement>(
       document.getElementById("chart-vendedor")
     )).getContext("2d");
@@ -245,7 +262,7 @@ export class ConteudoComponent implements OnChanges {
         type: "bar",
         data: data,
         options: {
-          responsive: false,
+          responsive: true,
           scales: {
             yAxes: [
               {
@@ -296,7 +313,7 @@ export class ConteudoComponent implements OnChanges {
         type: "line",
         data: dataLine,
         options: {
-          responsive: false,
+          responsive: true,
           title: {
             display: true,
             text: "Venda total mensal"

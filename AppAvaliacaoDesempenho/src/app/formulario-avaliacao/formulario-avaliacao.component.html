@@ -1,27 +1,42 @@
 <app-topo></app-topo>
 
-<div class="container" *ngIf="formReady">
+<div class="container content" style="margin-top: 40px;" *ngIf="formReady">
+    <div class="row form-group">
+        <div class="col-lg-11">
+
+        
+            <h2 class="page-header">
+                    Avaliação diária
+                </h2>
+            </div>
+            <div class="col-lg-1">
+                <a class="btn btn-secondary" href="/home">
+                    Voltar
+                </a>
+                </div>
+    </div>
+    
     <div class="form-avaliacao">
         <form
             novalidate
             [formGroup]="form"
             (ngSubmit)="salvarFormulario()"
         >
-        <div class="row">
-            <div class="col-md-3">
-                <div class="labelTitle"> Data da avaliacao </div>
-                <label class="form-control text-center" style="width: 100%;" >{{avaliacao.Data | date:"dd/MM/yyyy"}}</label>
+        <div class="row form-group">
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <label> Data da avaliacao </label>
+                <label class="form-control text-center disabled" style="width: 100%;" >{{avaliacao.Data | date:"dd/MM/yyyy"}}</label>
             </div>
-            <div class="col-md-6">
-                <div class="labelTitle"> Vendedor </div>
-                <label class="form-control">{{avaliacao.Vendedor.Nome}}</label>
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                <label> Vendedor </label>
+                <label class="form-control disabled">{{avaliacao.Vendedor.Nome}}</label>
             </div>            
-            <div class="col-md-3">
-                <div class="labelTitle"> Todal de Moedas </div>
+            <div class="col-md-3 col-lg-3 col-sm-12">
+                <label> Todal de Moedas </label>
 
                 <label
                     type="text"
-                    class="form-control"
+                    class="form-control disabled"
                 >
                     {{
                         (avaliacao.MetaVenda.MoedasVendaCalca +
@@ -32,6 +47,112 @@
             </div>
         </div>
         
+
+        <div class="row form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                    Vendas de calças
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                    <label>Meta</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="metaCalca"
+                        (input)="atualizarMoedas('calca')"
+                        min="0"
+                        required
+                    >
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <label>Realizado</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="realCalca"
+                            (input)="atualizarMoedas('calca')"
+                            min="0"
+                            required
+                        >
+                    </div>
+                    <div class="col-md-3">
+                        <label>Moedas</label>
+                            <label
+                                type="text"
+                                class="form-control"
+                            >{{avaliacao.MetaVenda.MoedasVendaCalca | number : '1.2-2'}}</label>
+                        </div>
+
+        </div>
+        <div class="row form-group">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                        Vendas de camisas
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <label>Meta</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="metaCamisa"
+                            (input)="atualizarMoedas('camisa')"
+                            min="0"
+                            required
+                        >
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <label>Realizado</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                formControlName="realCamisa"
+                                (input)="atualizarMoedas('camisa')"
+                                min="0"
+                                required
+                            >
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                <label>Moedas</label>
+                                <label
+                                    type="text"
+                                    class="form-control"
+                                >{{avaliacao.MetaVenda.MoedasVendaCamisa | number : '1.2-2'}}</label>
+                            </div>
+        </div>
+        <div class="row form-group">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                        Vendas de bermuda
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                        <label>Meta</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="metaBermuda"
+                            (input)="atualizarMoedas('bermuda')"
+                            min="0"
+                            required
+                        >
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label>Realizado</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                formControlName="realBermuda"
+                                (input)="atualizarMoedas('bermuda')"
+                                min="0"
+                                required
+                            >
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label>Moedas</label>
+                                <label
+                                    type="text"
+                                    class="form-control"
+                                >{{avaliacao.MetaVenda.MoedasVendaBermuda | number : '1.2-2'}}</label>
+                            </div>
+            </div>
+
+<!-- 
         <div class="grid-container">
             <div class="grid">
                 <div class="row">
@@ -145,7 +266,7 @@
                     </div>
                 </div>         
             </div>        
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-10"></div>

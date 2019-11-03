@@ -25,6 +25,7 @@
     width: 95%;
     padding: 20px;
 }
+
    
 div.chart-container {
     padding: 1px;
@@ -55,6 +56,28 @@ div.chart-container {
 }
 .fa-chart-line{
     color: #6868fa;
+}
+
+.icon-coin{
+  font-size: 30px !important;
+  margin-top: 5px !important;
+  margin-left: -5px !important;
+  color: yellow !important;
+}
+
+.container-coin{
+            width: 200px;
+            background: #585c61;
+            border: 1px solid black;
+            border-radius: 5px;
+            min-width: 50px;
+            display: inline-block;
+            cursor: pointer;
+}
+.counter-coin{
+  vertical-align: super;
+  color: white;
+  font-weight: 500;
 }
 
 
@@ -144,11 +167,23 @@ div.chart-container {
  @media (min-width: 750px){
     .table-responsive{
         display: inline-table !important;
-       
     }
+  
  }
  @media (max-width: 750px){
   .table-responsive{
     margin-top: 20px;
    }
+   .hidden-small{
+     display: none;
+   }
+  
+ }
+
+ .navbar .form-group{
+   margin-bottom: inherit;
+ }
+
+ .disabled{
+   background-color: #e2e2e2;
  }

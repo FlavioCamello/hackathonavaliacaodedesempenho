@@ -19,18 +19,17 @@
         "Nome": "João José Rezende e Costa",
         "ID": 1
       },
-      "id": 1,
-      "ID": "1"
+      "id": 1
     },
     {
       "MetaVenda": {
-        "MetaVendaCalca": 123,
+        "MetaVendaCalca": 20,
         "MetaVendaCamisa": 0,
         "MetaVendaBermuda": 0,
-        "RealVendaCalca": 0,
+        "RealVendaCalca": 15,
         "RealVendaCamisa": 0,
         "RealVendaBermuda": 0,
-        "MoedasVendaCalca": 0,
+        "MoedasVendaCalca": 75,
         "MoedasVendaCamisa": 0,
         "MoedasVendaBermuda": 0,
         "TotalMoedas": null
@@ -41,8 +40,7 @@
         "Nome": "João José Rezende e Costa",
         "ID": 1
       },
-      "id": 2,
-      "ID": 2
+      "id": 2
     },
     {
       "MetaVenda": {
@@ -63,8 +61,7 @@
         "Nome": "Sasuke Uchiha",
         "ID": 4
       },
-      "id": 3,
-      "ID": 3
+      "id": 3
     },
     {
       "MetaVenda": {
@@ -85,8 +82,7 @@
         "Nome": "Edward Elric",
         "ID": 2
       },
-      "id": 4,
-      "ID": 4
+      "id": 4
     },
     {
       "MetaVenda": {
@@ -107,8 +103,138 @@
         "Nome": "Edward Elric",
         "ID": 2
       },
-      "id": 5,
-      "ID": 5
+      "id": 5
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 28,
+        "MetaVendaCamisa": 15,
+        "MetaVendaBermuda": 8,
+        "RealVendaCalca": 15,
+        "RealVendaCamisa": 12,
+        "RealVendaBermuda": 10,
+        "MoedasVendaCalca": 53.57142857142857,
+        "MoedasVendaCamisa": 80,
+        "MoedasVendaBermuda": 125,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-03T20:06:35.046Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Igor Freitas Soledade",
+        "ID": "igor.f.soledade@gmail.com"
+      },
+      "id": 6
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 18,
+        "MetaVendaCamisa": 20,
+        "MetaVendaBermuda": 10,
+        "RealVendaCalca": 12,
+        "RealVendaCamisa": 13,
+        "RealVendaBermuda": 15,
+        "MoedasVendaCalca": 66.66666666666666,
+        "MoedasVendaCamisa": 65,
+        "MoedasVendaBermuda": 150,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-02T20:10:59.197Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Igor Freitas Soledade",
+        "ID": "igor.f.soledade@gmail.com"
+      },
+      "id": 7
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 50,
+        "MetaVendaCamisa": 42,
+        "MetaVendaBermuda": 30,
+        "RealVendaCalca": 30,
+        "RealVendaCamisa": 21,
+        "RealVendaBermuda": 8,
+        "MoedasVendaCalca": 0.6,
+        "MoedasVendaCamisa": 0.5,
+        "MoedasVendaBermuda": 0.26666666666666666,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-01T20:12:50.482Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Igor Freitas Soledade",
+        "ID": "igor.f.soledade@gmail.com"
+      },
+      "id": 8,
+      "ID": "8"
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 20,
+        "MetaVendaCamisa": 20,
+        "MetaVendaBermuda": 25,
+        "RealVendaCalca": 15,
+        "RealVendaCamisa": 12,
+        "RealVendaBermuda": 19,
+        "MoedasVendaCalca": 75,
+        "MoedasVendaCamisa": 60,
+        "MoedasVendaBermuda": 76,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-02T20:23:44.228Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Ricardo Flávio",
+        "ID": "gerente@gmail.com"
+      },
+      "id": 9
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 18,
+        "MetaVendaCamisa": 21,
+        "MetaVendaBermuda": 5,
+        "RealVendaCalca": 7,
+        "RealVendaCamisa": 3,
+        "RealVendaBermuda": 3,
+        "MoedasVendaCalca": 0.3888888888888889,
+        "MoedasVendaCamisa": 0.14285714285714285,
+        "MoedasVendaBermuda": 0.6,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-03T20:26:49.317Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Ricardo Flávio",
+        "Email": "gerente@gmail.com",
+        "ID": "gerente@gmail.com"
+      },
+      "id": 10,
+      "ID": "10"
+    },
+    {
+      "MetaVenda": {
+        "MetaVendaCalca": 10,
+        "MetaVendaCamisa": 10,
+        "MetaVendaBermuda": 10,
+        "RealVendaCalca": 8,
+        "RealVendaCamisa": 12,
+        "RealVendaBermuda": 15,
+        "MoedasVendaCalca": 0.8,
+        "MoedasVendaCamisa": 1.2,
+        "MoedasVendaBermuda": 1.5,
+        "TotalMoedas": null
+      },
+      "Data": "2019-11-01T21:05:08.285Z",
+      "Vendedor": {
+        "Avaliador": false,
+        "Nome": "Ricardo Flávio",
+        "Email": "gerente@gmail.com",
+        "ID": "gerente@gmail.com"
+      },
+      "id": 11
     }
+    
   ]
 }

@@ -23,7 +23,7 @@ export class FormularioAvaliacaoComponent implements OnInit {
   public formReady: boolean = false
   public route: ActivatedRoute
   public avaliacao: Avaliacao = new Avaliacao()
-  public usuarioLogado: Usuario = new Usuario(false) // RECUPERAR USUARIO LOGADO
+  public usuarioLogado: Usuario = new Usuario(false)
   public totalMoedas: number
   
   public form: FormGroup = new FormGroup({
@@ -50,6 +50,7 @@ export class FormularioAvaliacaoComponent implements OnInit {
       .then((usuario: any) => {
         this.usuarioLogado.Nome = usuario.nome_completo
         this.usuarioLogado.Email = usuario.email
+        this.usuarioLogado.ID = usuario.email
       })
 
     this.avaliacao.ID = this.route.snapshot.params["id"] 
@@ -121,17 +122,17 @@ export class FormularioAvaliacaoComponent implements OnInit {
     let moedasBermuda: number
 
     if(tipo == "calca" && metacalca > 0) {
-      moedasCalca = (realCalca / metacalca) * 100  
+      moedasCalca = (realCalca / metacalca) //* 100  
       this.avaliacao.MetaVenda.MoedasVendaCalca = moedasCalca      
     }
 
     if(tipo == "camisa" && metaCamisa > 0){
-      moedasCamisa = (realCamisa / metaCamisa) * 100
+      moedasCamisa = (realCamisa / metaCamisa) //* 100
       this.avaliacao.MetaVenda.MoedasVendaCamisa = moedasCamisa
     }
 
     if(tipo == "bermuda" && metaBermuda > 0){
-      moedasBermuda = (realBermuda / metaBermuda) * 100
+      moedasBermuda = (realBermuda / metaBermuda) //* 100
       this.avaliacao.MetaVenda.MoedasVendaBermuda = moedasBermuda
     }
 
